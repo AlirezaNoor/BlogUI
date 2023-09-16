@@ -1,0 +1,13 @@
+<form #form="ngForm" (ngSubmit)="submitcategories()"  >
+    <div class="m-3">
+      <label for="exampleInputEmail1" class="form-label">name</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" [(ngModel)]="model.name" name="categoryname">
+      <div id="emailHelp" class="form-text">plaese fillthe blank.</div>
+    </div>
+    <div class="m-3">
+      <label for="exampleInputPassword1" class="form-label">urlhandle</label>
+      <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="model.urlhadle" name="categoryhandler">
+    </div>
+ 
+    <button type="submit" class="btn btn-primary m-3">save</button>
+  </form>
