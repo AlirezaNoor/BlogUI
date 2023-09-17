@@ -1,9 +1,30 @@
 <div class="container">
-<h1>Categorylist</h1>
+    <h1>Categorylist</h1>
 
-<div class="d-flex justify-content-end  m-3">
-    <a class="btn btn-primary"  [routerLink]="['/admin/category/add']">add category</a>
+    <div class="d-flex justify-content-end  m-3">
+        <a class="btn btn-primary" [routerLink]="['/admin/category/add']">add category</a>
+    </div>
+    <ng-container *ngIf="categories">
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">title</th>
+                        <th scope="col">urlhandle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="" *ngFor="let i of categories ">
+                        <td>{{i.id}}</td>
+                        <td>{{i.name}}</td>
+                        <td>{{i.urlhadle}}</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+    </ng-container>
+
 </div>
-
- </div>
- 
