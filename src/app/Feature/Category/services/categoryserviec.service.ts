@@ -19,4 +19,8 @@ export class CategoryserviecService {
   getallcategories():Observable<categoryshow[]>{
     return this.http.get<categoryshow[]>(`${environment.baseapi}/api/Category/categoriesList`);
   }
+
+  getdtails( id:string):Observable<categoryshow>{
+return this.http.get<categoryshow>(`${environment.baseapi}/api/Category/Categorie/${id}`)
+  }
 }

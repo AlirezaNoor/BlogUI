@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CategoryListComponent } from './Feature/Category/category-list/category-list.component';
 import { CategoryAddComponent } from './Feature/Category/category-add/category-add.component';
+import { EditcategoryComponent } from './Feature/Category/editcategory/editcategory.component';
 
 const routes: Routes = [
   {
@@ -11,7 +12,11 @@ const routes: Routes = [
   {
     path:"admin/category/add",
     component:CategoryAddComponent
-  }
+  },
+  {
+    path:'admin/Category/:id',
+    component:EditcategoryComponent
+  },
 ];
 
 @NgModule({
