@@ -21,6 +21,6 @@ export class CategoryserviecService {
   }
 
   getdtails( id:string):Observable<categoryshow>{
-return this.http.get<categoryshow>(`${environment.baseapi}/api/Category/Categorie/${id}`)
+return this.http.get<categoryshow>(`${environment.baseapi}/api/Category/category/${id}`)
   }
 }

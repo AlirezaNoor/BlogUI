@@ -1,1 +1,29 @@
-<h1>{{id}}</h1>
+<ng-container *ngIf="category; else Notfound">
+  <form #form="ngForm" (ngSubmit)="onsubmit()">
+    <div class="container">
+      <div class="m-3">
+        <label for="exampleInputEmail1" class="form-label">id</label>
+        <input type="text" class="form-control" id="categoryid" [(ngModel)]="category.id" name="categoryid" disabled>
+      </div>
+
+      <div class="m-3">
+        <label for="exampleInputEmail1" class="form-label">name</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+               [(ngModel)]="category.name" name="categoryname">
+        <div class="form-text">plaese fillthe blank.</div>
+      </div>
+      <div class="m-3">
+        <label for="exampleInputEmail1" class="form-label">urlhandle</label>
+        <input type="email" class="form-control" aria-describedby="emailHelp" [(ngModel)]="category.urlhadle"
+               name="categoryhadle">
+        <div id="emailHelp" class="form-text">plaese fillthe blank.</div>
+      </div>
+    </div>
+    <button class="btn btn-danger">update</button>
+  </form>
+</ng-container>
+<ng-template #Notfound>
+  <div class="alert alert-primary" role="alert">
+    this category was not found
+  </div>
+</ng-template>
