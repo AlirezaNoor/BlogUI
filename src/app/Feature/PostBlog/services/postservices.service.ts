@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {addpost} from "../models/Blogpost.requst";
 import {Observable} from "rxjs/internal/Observable";
 import {environment} from "../../../../environments/environment";
+import {blogpostshow} from "../models/postblogshow";
 
 @Injectable({
   providedIn: 'root'
@@ -15,4 +16,8 @@ addpostblog(postblog:addpost):Observable<void>
 {
   return this.http.post<void>(`${environment.baseapi}/api/PostBlog/postblog`,postblog);
 }
+
+ getall():Observable<blogpostshow[]>{
+  return  this.http.get<blogpostshow[]>(`${environment.baseapi}/api/PostBlog/postblog`);
+ }
 }
