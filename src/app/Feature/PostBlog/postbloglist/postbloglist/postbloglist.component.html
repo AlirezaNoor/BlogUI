@@ -1,0 +1,43 @@
+<div class="container">
+  <h1>Blog post Lis</h1>
+
+  <div class="d-flex justify-content-end  m-3">
+    <a class="btn btn-primary" [routerLink]="['/admin/post/add']">add post</a>
+  </div>
+  <ng-container *ngIf="postblog">
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">img</th>
+          <th scope="col">title</th>
+          <th scope="col">urlhandler</th>
+          <th scope="col">isvisible</th>
+          <th scope="col">action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="" *ngFor="let i of  postblog ">
+          <td>{{i.id}}</td>
+          <td><img src="{{i.img}}" alt="" width="80px" height="80px"></td>
+          <td>{{i.title}}</td>
+          <td>{{i.urlhandler}}</td>
+          <td *ngIf="i.isvisible;else isnoo ">
+            <span class="badge text-bg-success">visible</span>
+
+          </td>
+          <ng-template #isnoo>
+            <span class="badge text-bg-danger m-3">unvisible</span>
+          </ng-template>
+          <td>
+            <a class="btn btn-danger" [routerLink]="['/admin/post',i.id]" >edit!</a>
+          </td>
+
+        </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </ng-container>
+</div>

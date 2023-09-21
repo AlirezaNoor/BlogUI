@@ -1,4 +1,4 @@
-export interface blogpostshow {
+export interface updatepost{
   id: string,
   title: string
   shorttitle: string

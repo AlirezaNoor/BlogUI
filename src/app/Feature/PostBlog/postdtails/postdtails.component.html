@@ -1,0 +1,64 @@
+<ng-container ng *ngIf="dtails else isnot">
+  <form #form="ngForm" (ngSubmit)="edited()">
+  <div class="container">
+    <div class="mb-3">
+      <label   class="form-label">title</label>
+      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"
+             [(ngModel)]="dtails.title" name="tiltle">
+    </div>
+
+    <div class="mb-3">
+      <label   class="form-label">ShortTitle</label>
+      <input type="text" class="form-control" placeholder="name@example.com" [(ngModel)]="dtails.shorttitle"
+             name="shorttitle">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">conteract</label>
+      <textarea class="form-control" rows="3" [(ngModel)]="dtails.cotent" name="content"></textarea>
+    </div>
+
+
+    <div class="mb-3">
+      <label class="form-label">img</label>
+      <input type="text" class="form-control" placeholder="name@example.com" [(ngModel)]="dtails.img" name="img">
+
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">url handle</label>
+      <input type="text" class="form-control" placeholder="name@example.com" [(ngModel)]="dtails.urlhandler"
+             name="urlhandel">
+
+    </div>
+    <div class="mb-3">
+      <label class="form-label">date</label>
+      <input type="date" class="form-control" value="{{dtails.date}}" [ngModel]="dtails.date |date:'yyy-MM-dd'"
+             name="mydate"
+             (ngModelChange)="dtails.date=$event"/>
+
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Author</label>
+      <input type="text" class="form-control" placeholder="name@example.com" [(ngModel)]="dtails.Author"
+             name="Auther">
+
+    </div>
+
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="isvisble" [(ngModel)]="dtails.isvisible"
+             name="isvisible">
+      <label class="form-check-label" for="isvisble">is visble </label>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <button type="submit" class="btn btn-danger">save!</button>
+  </div>
+</form>
+</ng-container>
+<ng-template #isnot>
+  <div class="alert alert-danger" role="alert">
+ post is not exsist any more
+  </div>
+</ng-template>

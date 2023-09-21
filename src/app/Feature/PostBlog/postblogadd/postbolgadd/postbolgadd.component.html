@@ -1,0 +1,67 @@
+<form #form="ngForm" (ngSubmit)="sendpost()">
+  <div class="container">
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">title</label>
+      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"
+             [(ngModel)]="postblog.title" name="tiltle">
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">ShortTitle</label>
+      <input type="text" class="form-control" placeholder="name@example.com" [(ngModel)]="postblog.shorttitle"
+             name="shorttitle">
+    </div>
+
+    <div class="mb-3 ">
+      <div class="d-flex flex-row p-2">
+        <div class="col-md-6">
+
+          <textarea class="form-control" id="context" name="context"  style=" max-height: 350px; height: 350px " [(ngModel)]="postblog.cotent"></textarea>
+        </div>
+        <div class="col-mb-6" style="overflow-y: scroll;max-height: 350px">
+
+          <markdown [data]="postblog.cotent" ></markdown>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="mb-3">
+      <label class="form-label">img</label>
+      <input type="text" class="form-control" placeholder="name@example.com" [(ngModel)]="postblog.img" name="img">
+
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">url handle</label>
+      <input type="text" class="form-control" placeholder="name@example.com" [(ngModel)]="postblog.urlhandler"
+             name="urlhandel">
+
+    </div>
+    <div class="mb-3">
+      <label class="form-label">date</label>
+      <input type="date" class="form-control" value="{{postblog.date}}" [ngModel]="postblog.date |date:'yyy-MM-dd'"
+             name="mydate"
+             (ngModelChange)="postblog.date=$event"/>
+
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Author</label>
+      <input type="text" class="form-control" placeholder="name@example.com" [(ngModel)]="postblog.Author"
+             name="Auther">
+
+    </div>
+
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="isvisble" [(ngModel)]="postblog.isvisible"
+             name="isvisible">
+      <label class="form-check-label" for="isvisble">is visble </label>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <button type="submit" class="btn btn-danger">save!</button>
+  </div>
+</form>
