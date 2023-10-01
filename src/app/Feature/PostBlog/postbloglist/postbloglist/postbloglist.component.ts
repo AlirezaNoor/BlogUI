@@ -1,6 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {PostservicesService} from "../../services/postservices.service";
 import {blogpostshow} from "../../models/postblogshow";
+import {Observable} from "rxjs/internal/Observable";
 
 @Component({
   selector: 'app-postbloglist',
@@ -8,7 +9,7 @@ import {blogpostshow} from "../../models/postblogshow";
   styleUrls: ['./postbloglist.component.css']
 })
 export class PostbloglistComponent implements OnInit,OnDestroy{
-  postblog?:blogpostshow[];
+  postblog?: blogpostshow[];
 constructor(private servic :PostservicesService) {
 }
 
@@ -17,10 +18,9 @@ constructor(private servic :PostservicesService) {
   }
 
   ngOnInit(): void {
-    this.servic.getall().subscribe({
-      next:(res)=>{this.postblog=res
-        console.log(res)
-      }
-    })
+ this.servic.getall().subscribe({
+   next:(req)=>{this.postblog=req; console.log(this.postblog)}
+
+ })
   }
 }

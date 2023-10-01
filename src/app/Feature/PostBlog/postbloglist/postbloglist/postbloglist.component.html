@@ -15,6 +15,7 @@
           <th scope="col">urlhandler</th>
           <th scope="col">isvisible</th>
           <th scope="col">action</th>
+          <th scope="col">category</th>
         </tr>
         </thead>
         <tbody>
@@ -23,17 +24,25 @@
           <td><img src="{{i.img}}" alt="" width="80px" height="80px"></td>
           <td>{{i.title}}</td>
           <td>{{i.urlhandler}}</td>
-          <td *ngIf="i.isvisible;else isnoo ">
-            <span class="badge text-bg-success">visible</span>
-
-          </td>
-          <ng-template #isnoo>
-            <span class="badge text-bg-danger m-3">unvisible</span>
-          </ng-template>
           <td>
-            <a class="btn btn-danger" [routerLink]="['/admin/post',i.id]" >edit!</a>
+            <ng-container *ngIf="i.isvisible else isnoo">
+              <span class="badge text-bg-danger m-3">visible</span>
+            </ng-container>
+            <ng-template #isnoo>
+              <span class="badge text-bg-danger m-3">unvisible</span>
+            </ng-template>
           </td>
 
+          <td>
+            <a class="btn btn-danger" [routerLink]="['/admin/post',i.id]">edit!</a>
+          </td>
+
+          <td>
+         <span *ngFor="let cat of i.categories ">
+
+    <span class="badge text-bg-primary m-3">{{cat.name}}</span>
+         </span>
+          </td>
         </tr>
 
         </tbody>

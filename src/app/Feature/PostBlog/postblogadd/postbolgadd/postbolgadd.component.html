@@ -53,7 +53,14 @@
              name="Auther">
 
     </div>
-
+    <div class="mb-3">
+      <label class="form-label">category</label>
+      <ng-container *ngIf="category$ | async as  category">
+        <select [(ngModel)]="postblog.category" multiple name="category">
+          <option *ngFor="let cat of category" [value]="cat.id">{{cat.name}}</option>
+        </select>
+      </ng-container>
+    </div>
     <div class="form-check">
       <input class="form-check-input" type="checkbox" value="" id="isvisble" [(ngModel)]="postblog.isvisible"
              name="isvisible">

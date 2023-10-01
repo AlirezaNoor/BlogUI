@@ -4,6 +4,9 @@ import {ActivatedRoute, Router, RouterLink, RouterLinkActive} from "@angular/rou
 import {updatepost} from "../models/updatepost";
 import {blogpostshow} from "../models/postblogshow";
 import {Subscription} from "rxjs/internal/Subscription";
+import {Observable} from "rxjs/internal/Observable";
+import {categoryshow} from "../../Category/models/Categoriesshow.model";
+import {CategoryserviecService} from "../../Category/services/categoryserviec.service";
 
 @Component({
   selector: 'app-postdtails',
@@ -11,7 +14,7 @@ import {Subscription} from "rxjs/internal/Subscription";
   styleUrls: ['./postdtails.component.css']
 })
 export class PostdtailsComponent implements OnInit, OnDestroy {
-  constructor(private servic: PostservicesService, private route: ActivatedRoute, private router:Router) {
+  constructor(private servic: PostservicesService, private route: ActivatedRoute, private router:Router, private categoryser:CategoryserviecService) {
 
   }
 
@@ -19,15 +22,19 @@ export class PostdtailsComponent implements OnInit, OnDestroy {
   dtails?: blogpostshow;
   unsubcb?: Subscription;
   unsubforupdate?: Subscription
-
+category$ ?:Observable<categoryshow[]>
+  categoryselectrd?: string[]
   ngOnInit(): void {
+    this.category$ = this.categoryser.getallcategories()
     this.unsubcb= this.route.paramMap.subscribe({
       next: (params) => {
         this.id = params.get('id')
         if (this.id) {
           this.servic.getpostdtails(this.id).subscribe({
             next: (res) => {
-              this.dtails = res
+              this.dtails = res;
+              this.categoryselectrd= res.categories.map(e=>e.id);
+              console.log(this.categoryselectrd);
             }
           })
         }
