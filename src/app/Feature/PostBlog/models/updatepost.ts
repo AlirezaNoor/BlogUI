@@ -1,4 +1,6 @@
-export interface updatepost{
+import {categoryshow} from "../../Category/models/Categoriesshow.model";
+
+export interface updatepost {
   id: string,
   title: string
   shorttitle: string
@@ -8,4 +10,5 @@ export interface updatepost{
   date: Date
   Author: string
   isvisible: boolean
+  category: string[],
 }

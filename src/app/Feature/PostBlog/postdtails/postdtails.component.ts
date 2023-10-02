@@ -54,12 +54,17 @@ category$ ?:Observable<categoryshow[]>
       date: this.dtails?.date ?? new Date(),
       shorttitle: this.dtails?.shorttitle ?? '',
       isvisible: this.dtails?.isvisible ?? true,
+      category:this.categoryselectrd ?? []
     };
    if (this.id){
+
     this.unsubforupdate= this.servic.updatepost(this.id,_updatepost).subscribe({
        next:(res)=>{
+         console.log(res)
+         console.log(_updatepost)
          this.router.navigateByUrl('/admin/Post');
-       }
+       },
+       error:(res)=>{console.log(res)}
      })
    }
   }

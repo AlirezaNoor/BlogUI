@@ -26,6 +26,6 @@ export class PostservicesService {
   }
 
   updatepost(id: string, blog: updatepost):Observable<blogpostshow>{
-    return this.http.put<blogpostshow>(`${environment.baseapi}/api/PostBlog/postblog/${id}`,blog);
+    return this.http.put<blogpostshow>(`${environment.baseapi}/api/PostBlog/postblogedit/${id}`,blog);
   }
 }
