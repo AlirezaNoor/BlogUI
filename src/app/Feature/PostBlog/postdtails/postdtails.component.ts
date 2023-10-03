@@ -14,7 +14,7 @@ import {CategoryserviecService} from "../../Category/services/categoryserviec.se
   styleUrls: ['./postdtails.component.css']
 })
 export class PostdtailsComponent implements OnInit, OnDestroy {
-  constructor(private servic: PostservicesService, private route: ActivatedRoute, private router:Router, private categoryser:CategoryserviecService) {
+  constructor(private servic: PostservicesService, private route: ActivatedRoute, private router: Router, private categoryser: CategoryserviecService) {
 
   }
 
@@ -22,18 +22,19 @@ export class PostdtailsComponent implements OnInit, OnDestroy {
   dtails?: blogpostshow;
   unsubcb?: Subscription;
   unsubforupdate?: Subscription
-category$ ?:Observable<categoryshow[]>
+  category$ ?: Observable<categoryshow[]>
   categoryselectrd?: string[]
+
   ngOnInit(): void {
     this.category$ = this.categoryser.getallcategories()
-    this.unsubcb= this.route.paramMap.subscribe({
+    this.unsubcb = this.route.paramMap.subscribe({
       next: (params) => {
         this.id = params.get('id')
         if (this.id) {
           this.servic.getpostdtails(this.id).subscribe({
             next: (res) => {
               this.dtails = res;
-              this.categoryselectrd= res.categories.map(e=>e.id);
+              this.categoryselectrd = res.categories.map(e => e.id);
               console.log(this.categoryselectrd);
             }
           })
@@ -44,7 +45,7 @@ category$ ?:Observable<categoryshow[]>
 
   edited() {
 
-    const _updatepost : updatepost = {
+    const _updatepost: updatepost = {
       id: this.dtails?.id ?? '',
       title: this.dtails?.title ?? '',
       urlhandler: this.dtails?.urlhandler ?? '',
@@ -54,24 +55,32 @@ category$ ?:Observable<categoryshow[]>
       date: this.dtails?.date ?? new Date(),
       shorttitle: this.dtails?.shorttitle ?? '',
       isvisible: this.dtails?.isvisible ?? true,
-      category:this.categoryselectrd ?? []
+      category: this.categoryselectrd ?? []
     };
-   if (this.id){
+    if (this.id) {
 
-    this.unsubforupdate= this.servic.updatepost(this.id,_updatepost).subscribe({
-       next:(res)=>{
-         console.log(res)
-         console.log(_updatepost)
-         this.router.navigateByUrl('/admin/Post');
-       },
-       error:(res)=>{console.log(res)}
-     })
-   }
+      this.unsubforupdate = this.servic.updatepost(this.id, _updatepost).subscribe({
+        next: (res) => {
+          console.log(res)
+          console.log(_updatepost)
+          this.router.navigateByUrl('/admin/Post');
+        },
+        error: (res) => {
+          console.log(res)
+        }
+      })
+    }
   }
-
+Del(){
+    if (this.id){
+      this.servic.deletepost(this.id).subscribe({
+        next:()=>{this.router.navigateByUrl('/admin/Post')}
+      })
+    }
+}
   ngOnDestroy(): void {
-this.unsubcb?.unsubscribe();
-this.unsubforupdate?.unsubscribe();
+    this.unsubcb?.unsubscribe();
+    this.unsubforupdate?.unsubscribe();
   }
 
 
