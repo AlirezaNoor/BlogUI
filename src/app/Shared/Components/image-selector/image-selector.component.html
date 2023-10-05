@@ -1,24 +1,39 @@
 <div class="col-md-12 m-3">
   <div class="">
-    <div class="card">
-      <div class="card-header">uploadImage</div>
-      <div class="card-body d-block ">
-        <div class="col-6">
-          <label class="d-block">image</label>
-          <input type="file" placeholder="uplade image">
-        </div>
-        <div class="col-6">
-          <label class="d-block">file name</label>
-          <input type="text" placeholder="name image">
-        </div>
-        <div class="col-6">
-          <label class="d-block">file tilte</label>
-          <input type="text" placeholder="name image">
-        </div>
-        <div class="col-2 my-2">
-     <button class="btn btn-dark">upload</button>
+    <form #form="ngForm" (ngSubmit)="uploaded()" class="d-flex">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">uploadImage</div>
+          <div class="card-body d-block ">
+            <div class="col-6">
+              <label class="d-block">image</label>
+              <input type="file" placeholder="uplade image" (change)="uploadimage($event)">
+            </div>
+            <div class="col-6">
+              <label class="d-block">file name</label>
+              <input type="text" placeholder="name image" [(ngModel)]="filename" name="filename">
+            </div>
+            <div class="col-6">
+              <label class="d-block">file tilte</label>
+              <input type="text" placeholder="name image" [(ngModel)]="tiltle" name="tiltle">
+            </div>
+            <div class="col-2 my-2">
+              <button class="btn btn-dark">upload</button>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+      <div class="col-md-6 bg-white" style="overflow-y: scroll">
+        <ng-container *ngIf="images$ | async as images" >
+          <div class="d-flex flex-wrap bg bg-withe">
+
+            <div *ngFor="let item of images" style="min-width: 100px;justify-content: center" class="d-flex align-items-center flex-column border p-3   bg-white">
+              <img [src]="item.urlhandle" [title]="item.tiltle" alt="i" style="height: 100px">
+              <span>{{item.tiltle}}</span>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </form>
   </div>
 </div>
