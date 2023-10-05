@@ -27,7 +27,8 @@
         <ng-container *ngIf="images$ | async as images" >
           <div class="d-flex flex-wrap bg bg-withe">
 
-            <div *ngFor="let item of images" style="min-width: 100px;justify-content: center" class="d-flex align-items-center flex-column border p-3   bg-white">
+            <div *ngFor="let item of images" style="min-width: 100px;justify-content: center"
+                 class="d-flex align-items-center flex-column border p-3   bg-white" (click)="selectedimg(item)">
               <img [src]="item.urlhandle" [title]="item.tiltle" alt="i" style="height: 100px">
               <span>{{item.tiltle}}</span>
             </div>

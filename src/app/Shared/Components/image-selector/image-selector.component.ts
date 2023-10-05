@@ -32,6 +32,10 @@ if (this.file!=null && this.filename!=null&& this.tiltle!=null)
   })
 }
   }
+  selectedimg(img:IMGbog){
+this.service.selectmg(img)
+    console.log(img);
+  }
 
 private getall(){
   this.images$=this.service.getall()
