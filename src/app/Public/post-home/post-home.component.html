@@ -1,0 +1,17 @@
+<ng-container *ngIf="Bolgs$ |async as blog">
+  <div class="row row-cols-6 row-cols-md-4 g-4" >
+    <div class="col-4" *ngFor=" let i of blog">
+      <div class="card">
+        <img [src]="i.img" class="card-img-top" alt="..." width="190px" height="180px">
+        <div class="card-body">
+          <h5 class="card-title">{{i.title}}</h5>
+          <p class="card-text">{{i.shorttitle}}</p>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-dark" [routerLink]="['/blog',i.urlhandler]"  > go...</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</ng-container>
