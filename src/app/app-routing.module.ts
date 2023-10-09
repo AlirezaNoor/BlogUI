@@ -1,41 +1,54 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { CategoryListComponent } from './Feature/Category/category-list/category-list.component';
-import { CategoryAddComponent } from './Feature/Category/category-add/category-add.component';
-import { EditcategoryComponent } from './Feature/Category/editcategory/editcategory.component';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {CategoryListComponent} from './Feature/Category/category-list/category-list.component';
+import {CategoryAddComponent} from './Feature/Category/category-add/category-add.component';
+import {EditcategoryComponent} from './Feature/Category/editcategory/editcategory.component';
 import {PostbloglistComponent} from "./Feature/PostBlog/postbloglist/postbloglist/postbloglist.component";
 import {PostbolgaddComponent} from "./Feature/PostBlog/postblogadd/postbolgadd/postbolgadd.component";
 import {PostdtailsComponent} from "./Feature/PostBlog/postdtails/postdtails.component";
+import {PostHomeComponent} from "./Public/post-home/post-home.component";
+import {PostshowdtailsComponent} from "./Public/postshowdtails/postshowdtails.component";
 
 const routes: Routes = [
   {
-    path:"admin/Category",
-    component:CategoryListComponent
+    path:'blog/:url',
+    component:PostshowdtailsComponent
+
   },
   {
-    path:"admin/category/add",
-    component:CategoryAddComponent
+    path:'',
+    component:PostHomeComponent
   },
   {
-    path:'admin/Category/:id',
-    component:EditcategoryComponent
+    path: "admin/Category",
+    component: CategoryListComponent
   },
   {
-    path:'admin/Post',
-    component:PostbloglistComponent
+    path: "admin/category/add",
+    component: CategoryAddComponent
   },
   {
-    path:'admin/post/add',
-    component:PostbolgaddComponent
+    path: 'admin/Category/:id',
+    component: EditcategoryComponent
   },
   {
-    path:'admin/post/:id',
-    component:PostdtailsComponent
+    path: 'admin/Post',
+    component: PostbloglistComponent
+  },
+  {
+    path: 'admin/post/add',
+    component: PostbolgaddComponent
+  },
+  {
+    path: 'admin/post/:id',
+    component: PostdtailsComponent
   }
+
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

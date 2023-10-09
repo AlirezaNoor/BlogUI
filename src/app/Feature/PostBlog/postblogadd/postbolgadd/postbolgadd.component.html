@@ -29,6 +29,9 @@
 
 
     <div class="mb-3">
+      <button type="button" class=" btn btn-dark" (click)="show()">
+        upload
+      </button>
       <label class="form-label">img</label>
       <input type="text" class="form-control" placeholder="name@example.com" [(ngModel)]="postblog.img" name="img">
 
@@ -72,3 +75,7 @@
     <button type="submit" class="btn btn-danger">save!</button>
   </div>
 </form>
+<div class="this-is-my-style" [ngClass]="{'d-block':isvisbel ,'d-none':!isvisbel}">
+  <button style="position: fixed;top: 10px ;left: 10px" type="button" class="btn btn-outline-info" (click)="show()">X</button>
+  <app-image-selector></app-image-selector>
+</div>

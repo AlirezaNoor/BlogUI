@@ -21,6 +21,7 @@
 
       <div class="mb-3">
         <label class="form-label">img</label>
+        <button type="button" class="btn btn-dark" (click)="showmodal()" >uploadimage</button>
         <input type="text" class="form-control" placeholder="name@example.com" [(ngModel)]="dtails.img" name="img">
 
       </div>
@@ -70,3 +71,7 @@
     post is not exsist any more
   </div>
 </ng-template>
+<div class="this-is-my-style" [ngClass]="{'d-block':isupldadimagevisible ,'d-none':!isupldadimagevisible}">
+  <button style="position: fixed;top: 10px ;left: 10px" type="button" class="btn btn-outline-info" (click)="showmodal()">X</button>
+  <app-image-selector></app-image-selector>
+</div>

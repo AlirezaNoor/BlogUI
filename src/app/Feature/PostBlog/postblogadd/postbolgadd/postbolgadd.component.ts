@@ -6,6 +6,7 @@ import {Subscription} from "rxjs/internal/Subscription";
  import {categoryshow} from "../../../Category/models/Categoriesshow.model";
 import {CategoryserviecService} from "../../../Category/services/categoryserviec.service";
 import {Observable} from "rxjs/internal/Observable";
+import {ImgServiceService} from "../../../../Shared/Components/image-selector/img-service.service";
 
 @Component({
   selector: 'app-postbolgadd',
@@ -15,8 +16,9 @@ import {Observable} from "rxjs/internal/Observable";
 export class PostbolgaddComponent implements OnDestroy,OnInit {
   postblog: addpost;
   unsubscription?: Subscription;
+   isvisbel:Boolean= false;
 category$ ?:Observable<categoryshow[]>
-  constructor(private sevice: PostservicesService, private router: Router, private categoryservices:CategoryserviecService) {
+  constructor(private sevice: PostservicesService, private router: Router, private categoryservices:CategoryserviecService, private imgserv:ImgServiceService) {
     this.postblog = {
       title: '',
       urlhandler: '',
@@ -31,6 +33,13 @@ category$ ?:Observable<categoryshow[]>
   }
   ngOnInit(): void {
   this.category$=this.categoryservices.getallcategories();
+  this.imgserv.onselectedimg().subscribe({
+    next:(res)=>{
+      this.postblog.img=res.urlhandle
+      this.isvisbel=false
+    }
+  })
+
   }
   sendpost(): void {
     this.unsubscription = this.sevice.addpostblog(this.postblog).subscribe(
@@ -45,8 +54,9 @@ category$ ?:Observable<categoryshow[]>
 
     this.unsubscription?.unsubscribe();
   }
+  show():void
+  {
+  this.isvisbel=!this.isvisbel
+  }
 
-
-
-
-}
+ }

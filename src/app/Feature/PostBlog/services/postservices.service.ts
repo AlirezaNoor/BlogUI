@@ -32,4 +32,8 @@ export class PostservicesService {
   deletepost(id:string):Observable<void>{
     return this.http.delete<void>(`${environment.baseapi}/api/PostBlog/Delete/${id}`)
   }
+
+  getbyurl(url:string):Observable<blogpostshow>{
+    return this.http.get<blogpostshow>(`${environment.baseapi}/api/PostBlog/dtails/${url}`)
+  }
 }

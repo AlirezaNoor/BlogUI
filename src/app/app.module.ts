@@ -13,6 +13,9 @@ import { PostbloglistComponent } from './Feature/PostBlog/postbloglist/postblogl
 import { PostbolgaddComponent } from './Feature/PostBlog/postblogadd/postbolgadd/postbolgadd.component';
 import { PostdtailsComponent } from './Feature/PostBlog/postdtails/postdtails.component'
 import { MarkdownModule } from 'ngx-markdown';
+import { ImageSelectorComponent } from './Shared/Components/image-selector/image-selector.component';
+import { PostHomeComponent } from './Public/post-home/post-home.component';
+import { PostshowdtailsComponent } from './Public/postshowdtails/postshowdtails.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +25,10 @@ import { MarkdownModule } from 'ngx-markdown';
     EditcategoryComponent,
     PostbloglistComponent,
     PostbolgaddComponent,
-    PostdtailsComponent
+    PostdtailsComponent,
+    ImageSelectorComponent,
+    PostHomeComponent,
+    PostshowdtailsComponent
   ],
   imports: [
     BrowserModule,

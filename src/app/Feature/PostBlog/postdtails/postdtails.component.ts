@@ -7,6 +7,7 @@ import {Subscription} from "rxjs/internal/Subscription";
 import {Observable} from "rxjs/internal/Observable";
 import {categoryshow} from "../../Category/models/Categoriesshow.model";
 import {CategoryserviecService} from "../../Category/services/categoryserviec.service";
+import {ImgServiceService} from "../../../Shared/Components/image-selector/img-service.service";
 
 @Component({
   selector: 'app-postdtails',
@@ -14,14 +15,15 @@ import {CategoryserviecService} from "../../Category/services/categoryserviec.se
   styleUrls: ['./postdtails.component.css']
 })
 export class PostdtailsComponent implements OnInit, OnDestroy {
-  constructor(private servic: PostservicesService, private route: ActivatedRoute, private router: Router, private categoryser: CategoryserviecService) {
+  constructor(private servic: PostservicesService, private route: ActivatedRoute, private router: Router, private categoryser: CategoryserviecService, private imgservice:ImgServiceService) {
 
   }
-
+isupldadimagevisible:boolean=false;
   id: string | null = null;
   dtails?: blogpostshow;
   unsubcb?: Subscription;
   unsubforupdate?: Subscription
+  unsubimg?: Subscription
   category$ ?: Observable<categoryshow[]>
   categoryselectrd?: string[]
 
@@ -38,11 +40,26 @@ export class PostdtailsComponent implements OnInit, OnDestroy {
               console.log(this.categoryselectrd);
             }
           })
+
         }
+
+          this.unsubimg= this.imgservice.onselectedimg().subscribe({
+            next:(res)=>{
+              if (this.dtails){
+                this.dtails.img=res.urlhandle
+                console.log(`${res} ta inja onnnmad`)
+                this.isupldadimagevisible=false;
+              }
+            } ,
+            error:(res)=>{console.error()}
+          })
+
       }
     })
   }
-
+  showmodal():void{
+    this.isupldadimagevisible=!this.isupldadimagevisible
+  }
   edited() {
 
     const _updatepost: updatepost = {
@@ -81,6 +98,7 @@ Del(){
   ngOnDestroy(): void {
     this.unsubcb?.unsubscribe();
     this.unsubforupdate?.unsubscribe();
+    this.unsubimg?.unsubscribe();
   }
 
 
