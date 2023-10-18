@@ -32,6 +32,9 @@ dependencies:
   marked:
     specifier: ^4.3.0
     version: 4.3.0
+  ngx-cookie-service:
+    specifier: ^16.0.1
+    version: 16.0.1(@angular/common@16.2.5)(@angular/core@16.2.5)
   ngx-markdown:
     specifier: ^16.0.0
     version: 16.0.0(@angular/common@16.2.5)(@angular/core@16.2.5)(@angular/platform-browser@16.2.5)(@types/marked@4.3.1)(marked@4.3.0)(rxjs@7.8.1)(zone.js@0.13.3)
@@ -5722,6 +5725,17 @@ packages:
   /neo-async@2.6.2:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
     dev: true
+
+  /ngx-cookie-service@16.0.1(@angular/common@16.2.5)(@angular/core@16.2.5):
+    resolution: {integrity: sha512-q8i5eX2b6SIIZcu9wy+lvOU65cLJhHD9EVz5TGGkKi8Y7X/aZbUyQ9U4CgNOfKDWtPUDFOMD8IW/cijoVKe59Q==}
+    peerDependencies:
+      '@angular/common': ^16.0.0
+      '@angular/core': ^16.0.0
+    dependencies:
+      '@angular/common': 16.2.5(@angular/core@16.2.5)(rxjs@7.8.1)
+      '@angular/core': 16.2.5(rxjs@7.8.1)(zone.js@0.13.3)
+      tslib: 2.6.2
+    dev: false
 
   /ngx-markdown@16.0.0(@angular/common@16.2.5)(@angular/core@16.2.5)(@angular/platform-browser@16.2.5)(@types/marked@4.3.1)(marked@4.3.0)(rxjs@7.8.1)(zone.js@0.13.3):
     resolution: {integrity: sha512-/rlbXi+HBscJCDdwaTWIUrRkvwJicPnuAgeugOCZa0UbZ4VCWV3U0+uB1Zv6krRDF6FXJNXNLTUrMZV7yH8I6A==}
