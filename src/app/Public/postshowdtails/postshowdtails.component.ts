@@ -27,3 +27,4 @@ export class PostshowdtailsComponent implements  OnInit{
   }
 
 }
+

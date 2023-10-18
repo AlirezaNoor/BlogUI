@@ -16,6 +16,7 @@ import { MarkdownModule } from 'ngx-markdown';
 import { ImageSelectorComponent } from './Shared/Components/image-selector/image-selector.component';
 import { PostHomeComponent } from './Public/post-home/post-home.component';
 import { PostshowdtailsComponent } from './Public/postshowdtails/postshowdtails.component';
+import { LoginComponent } from './Feature/auth/login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +29,8 @@ import { PostshowdtailsComponent } from './Public/postshowdtails/postshowdtails.
     PostdtailsComponent,
     ImageSelectorComponent,
     PostHomeComponent,
-    PostshowdtailsComponent
+    PostshowdtailsComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

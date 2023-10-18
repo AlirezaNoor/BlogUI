@@ -8,6 +8,7 @@ import {PostbolgaddComponent} from "./Feature/PostBlog/postblogadd/postbolgadd/p
 import {PostdtailsComponent} from "./Feature/PostBlog/postdtails/postdtails.component";
 import {PostHomeComponent} from "./Public/post-home/post-home.component";
 import {PostshowdtailsComponent} from "./Public/postshowdtails/postshowdtails.component";
+import {LoginComponent} from "./Feature/auth/login/login.component";
 
 const routes: Routes = [
   {
@@ -42,8 +43,11 @@ const routes: Routes = [
   {
     path: 'admin/post/:id',
     component: PostdtailsComponent
+  },
+  {
+    path:'login',
+    component:LoginComponent
   }
-
 ];
 
 @NgModule({
