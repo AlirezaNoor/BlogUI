@@ -11,7 +11,7 @@ import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 })
 export class LoginComponent {
   model: Loginmodel;
-
+model2?:any;
   constructor(private service:LoginserviceService,private cookieService: CookieService, private redireted:Router) {
 
     this.model = {
@@ -23,8 +23,14 @@ export class LoginComponent {
   onsubmit():void{
  this.service.login(this.model).subscribe(
    {
-     next:(res)=>{console.log(res)
-       this.cookieService.set("Authorization",`Bearer ${res.Token}`,undefined,"/",undefined,true,"Strict");
+     next:(res)=>{console.log(res);
+       console.log(res.token)
+       this.model2=this.cookieService.set('Authorization',`Bearer ${res.token}`,undefined,'/',undefined,true,'Strict');
+
+this.service.setuser({
+  email:res.email,
+  role:res.role
+});
        this.redireted.navigateByUrl("/");
      },
      error:(res)=>{console.log(res)}

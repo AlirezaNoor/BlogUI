@@ -1,5 +1,5 @@
 export  interface logingrespons{
-  Email :string
-  Token  :string
-  role  :[]
+  email :string
+  token  :string
+  role  :string[]
 }
